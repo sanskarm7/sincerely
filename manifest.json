@@ -4,7 +4,7 @@
     "description": "Uses AI to create passive-aggressive emails.",
     "version": "1.0",
     "action": {
-      "default_popup": "index.html",
+      "default_popup": "views/index.html",
       "default_icon": "public/img/icon.png"
     }
   }
