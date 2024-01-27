@@ -10,11 +10,11 @@ console.log("REACHED")
 
 async function passive_aggressive_scale(text, scale) {
   const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "given this text ${text}" }],
+    messages: [{ role: "system", content: "given this text: ${text}" }],
     model: "gpt-3.5-turbo",
   });
 
   console.log(completion.choices[0]);
 }
 
-main();
+passive_aggressive_scale("i love sunshine and rainbows", );
