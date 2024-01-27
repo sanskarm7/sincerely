@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Passive Aggressive Text Generator",
+    "description": "Uses AI to create passive-aggressive emails.",
+    "version": "1.0",
+    "action": {
+      "default_popup": "hello.html",
+      "default_icon": "hello_extensions.png"
+    }
+  }
