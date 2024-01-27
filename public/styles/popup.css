@@ -1,6 +1,7 @@
 html,
 body {
 	height: 100%;
+	background: #000;
 }
 
 * {
@@ -19,17 +20,6 @@ main {
 	flex-direction: column;
 	gap: 2.2em;
 	padding: 1em 0;
-}
-
-html::before {
-	content: "";
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	background: radial-gradient(circle at center, #fff, #fafafa);
-	display: block;
 }
 
 .generate-button {
@@ -117,31 +107,16 @@ input[type="range"] {
 	color: #ef233c;
 	--thumb-height: 1.125em;
 	--track-height: 0.225em;
-	--track-color: rgba(0, 0, 0, 0.2);
+	--track-color: #1d1d1d;
 	--brightness-hover: 180%;
 	--brightness-down: 80%;
-	--clip-edges: 0.125em;
-}
-
-@media (prefers-color-scheme: dark) {
-	html {
-		background-color: #000;
-	}
-
-	html::before {
-		background: radial-gradient(circle at center, #101112, #000);
-	}
-
-	input[type="range"] {
-		color: #f07167;
-		--track-color: rgba(255, 255, 255, 0.1);
-	}
+	--clip-edges: .225em;
 }
 
 /* === range commons === */
 input[type="range"] {
 	position: relative;
-	background: #fff0;
+	background: #000;
 	overflow: hidden;
 }
 
