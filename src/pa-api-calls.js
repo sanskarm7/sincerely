@@ -8,9 +8,9 @@ const openai = new OpenAI(API_KEY);
 
 console.log("REACHED")
 
-async function main() {
+async function passive_aggressive_scale(text, scale) {
   const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "how was your day (one word only" }],
+    messages: [{ role: "system", content: "given this text ${text}" }],
     model: "gpt-3.5-turbo",
   });
 
