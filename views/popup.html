@@ -10,10 +10,20 @@
     <div>
       <button class="generate-button">Generate Email</button>
     </div>
-    <div class="slider">
-      <input type="range" id="pa-slider" min="-3" max="3" value="0" step="1" />
+    <div>
+      <div class="slider">
+        <input
+          type="range"
+          id="pa-slider"
+          min="-3"
+          max="3"
+          value="0"
+          step="1"
+        />
+      </div>
       <div class="value">0</div>
     </div>
+
     <script>
       const slider = document.querySelector("input");
       const value = document.querySelector(".value");
