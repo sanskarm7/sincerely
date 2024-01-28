@@ -3,34 +3,26 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="../public/styles/popup.css" />
-    <script src="popup.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
     <title>Passive Aggressive Email Popup</title>
   </head>
+
   <body>
-    <div>
-      <button class="generate-button">Generate Email</button>
-    </div>
-    <div>
-      <div class="slider">
-        <input
-          type="range"
-          id="pa-slider"
-          min="-3"
-          max="3"
-          value="0"
-          step="1"
-        />
+    <h2>Sincerely</h2>
+    <div class="center"></div>
+
+      <div class="wrap">
+        <button class="generate-button">GENERATE</button>
       </div>
-      <div class="value">0</div>
+
+      <div class="wrap">
+        <div class="slider">
+          <input type="range" id="pa-slider" min="-3" max="3" value="0" step="1"/>
+        </div>
+        <div class="value">0</div>
+      </div>
+
     </div>
 
-    <script>
-      const slider = document.querySelector("input");
-      const value = document.querySelector(".value");
-      value.textContent = slider.value;
-      slider.oninput = function () {
-        value.textContent = this.value;
-      };
-    </script>
   </body>
 </html>

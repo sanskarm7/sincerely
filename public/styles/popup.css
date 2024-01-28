@@ -1,7 +1,17 @@
+:root {
+	--accent-color: #fff;
+	--background-color: #000;
+	--dark-accent-color: #1d1d1d;
+    --red: #ef233c;
+    --blue: #2345ef;
+	--color-gradient: linear-gradient(to right, #2345ef, #9188f9, #d5cefe, #ffffff, #f5adde, #fd83b5, #ef233c);
+	font-family: "Helvetica Neue";
+}
+
 html,
 body {
 	height: 100%;
-	background: #000;
+	background: var(--background-color);
 }
 
 * {
@@ -13,6 +23,8 @@ body {
 body {
 	display: grid;
 	place-items: center;
+	width: 400px;
+	height: 500px
 }
 
 main {
@@ -22,14 +34,27 @@ main {
 	padding: 1em 0;
 }
 
+.center {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap {
+	margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .generate-button {
   align-items: center;
-  background-color: #000;
-  border: 1px solid #FFFFFF;
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: var(--accent-color);
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -71,9 +96,9 @@ main {
 
 .value{
   align-items: center;
-  color: #FFFFFF;
-  background-color: #000;
-  border: 1px solid #FFFFFF;
+  color: var(--accent-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
@@ -103,10 +128,10 @@ input[type="range"] {
 }
 
 input[type="range"] {
-	color: #ef233c;
+	color: var(--red);
 	--thumb-height: 1.125em;
 	--track-height: 0.225em;
-	--track-color: #1d1d1d;
+	--track-color: var(--dark-accent-color);
 	--brightness-hover: 180%;
 	--brightness-down: 80%;
 	--clip-edges: .225em;
@@ -115,7 +140,7 @@ input[type="range"] {
 /* === range commons === */
 input[type="range"] {
 	position: relative;
-	background: #000;
+	background: var(--background-color);
 	overflow: hidden;
 }
 
