@@ -6,7 +6,7 @@
 
 
 body {
-    font-family: "Helvetica Neue";
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: var(--background-color);
     padding-top: 80px;
 	width: 300px;
@@ -91,7 +91,7 @@ h4 {
 
 input[type="range"] {
 	font-size: 1.5rem;
-	width: 100%;
+	width: 11rem;
 	position: relative;
 	background: var(--background-color);
 	overflow: hidden;
@@ -100,7 +100,7 @@ input[type="range"] {
 input[type="range"] {
 	color: var(--accent-color-2);
 	--thumb-height: 1em;
-	--track-height: 0.225em;
+	--track-height: 0.125em;
 	--track-color: var(--accent-color);
 	--clip-edges: .225em;
 }
@@ -163,3 +163,21 @@ input[type="range"]::-webkit-slider-runnable-track {
 		100% calc(var(--track-height) + 1px);
 }
 
+/* textbox */
+
+.text-box {
+	height: 9em;
+	width: 11em;
+	overflow: auto;
+	font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    background-color: var(--background-color);
+	margin: 0;
+    
+    border: 3px solid var(--accent-color);
+    padding: 0.25em 0.5em;
+} 
