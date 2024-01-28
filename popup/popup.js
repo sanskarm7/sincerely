@@ -6,9 +6,16 @@ slider.oninput = function() {
     PALEVEL.innerHTML = this.value;
 }
 
+// Event handlers
+var generateButton = document.querySelector('.generate-button');
+generateButton.addEventListener('click', generate);
+
+var copyButton = document.querySelector('.copy-button');
+copyButton.addEventListener('click', copy);
 
 // process text input
-const TEXTBODY = () => window.getSelection().toString();
+const TEXTBODY = window.getSelection().toString();
+console.log(TEXTBODY)
 
 function wordCount(str) {
     var ct = 0;
@@ -19,35 +26,32 @@ function wordCount(str) {
     ct += 1;
     return ct;
 }
-
-function generate() {
-    if (wordCount(TEXTBODY) <= 500) {
-        generatedString = getAPIResponse()
-        document.getElementById('textbox').innerHTML = generatedString;
-    }
-    else {
-        printTooLongError("Text prompt too long, try again.")
-    }
-}
-
-function getAPIResponse() {
-    const returnValue = '';
+async function getAPIResponse() {
+    const url = 'http://localhost:3000/api/adjust-pa.json'
     const username = 'SincerelyTeam';
     const password = 'PassiveAggressive01011419';
     const encodedCredentials = btoa(`${username}:${password}`)
-
-    fetch('localhost:3000/api/adjust-pa.json', {
+    
+    const requestOptions = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${encodedCredentials}`
+            'authorization': `Basic ${encodedCredentials}`
         },
-        body: JSON.stringify({ text: TEXTBODY, pa: PALEVEL }),
-    })
-    .then(response => response.text())
-    .then(data => { returnValue = data })
+        body: JSON.stringify({ text: 'Your feet have been smelling very bad. Please stop wearing sandals to the office.', pa: PALEVEL })
+    }
 
-    return returnValue
+    try {
+        const response = await fetch(url, requestOptions);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data; // Return the data for use elsewhere
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 }
 
 function printTooLongError() {
@@ -59,6 +63,42 @@ function printTooLongError() {
     }
 }
 
+async function generate() {
+    try {
+        // Send a message to the content script to get highlighted text
+        const response = await sendMessageToContentScript({ action: 'getHighlightedText' });
+    
+        // Handle the response from the content script
+        console.log('Received response in popup:', response);
+        
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    
+
+    if (wordCount(TEXTBODY) <= 500) {
+        generatedString = await getAPIResponse()
+        document.querySelector('.text-box').innerHTML = generatedString;
+    }
+    else {
+        printTooLongError("Text prompt too long, try again.")
+    }
+}
+
+function sendMessageToContentScript(message) {
+    return new Promise((resolve, reject) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
+          if (chrome.runtime.lastError) {
+            reject(chrome.runtime.lastError);
+          } else {
+            resolve(response);
+          }
+        });
+      });
+    });
+  }
+  
 
 // copy button for generated text
 function copy() {
@@ -68,3 +108,5 @@ function copy() {
     navigator.clipboard.writeText(copyText.value);
     alert("Copied!");
 }
+
+
