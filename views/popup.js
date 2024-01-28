@@ -22,8 +22,8 @@ function wordCount(str) {
 
 function generate() {
     if (wordCount(TEXTBODY) <= 500) {
-        response = getAPIResponse()
-        
+        generatedString = getAPIResponse()
+        document.getElementById('textbox').innerHTML = generatedString;
     }
     else {
         printTooLongError("Text prompt too long, try again.")
@@ -31,8 +31,9 @@ function generate() {
 }
 
 function getAPIResponse() {
-    const username = 'yourUsername';
-    const password = 'yourPassword';
+    const returnValue = '';
+    const username = 'SincerelyTeam';
+    const password = 'PassiveAggressive01011419';
     const encodedCredentials = btoa(`${username}:${password}`)
 
     fetch('localhost:3000/api/adjust-pa.json', {
@@ -44,7 +45,9 @@ function getAPIResponse() {
         body: JSON.stringify({ text: TEXTBODY, pa: PALEVEL }),
     })
     .then(response => response.text())
-    .then(data => console.log(data))
+    .then(data => { returnValue = data })
+
+    return returnValue
 }
 
 function printTooLongError() {
