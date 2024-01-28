@@ -1,8 +1,9 @@
-const slider = document.querySelector("input");
-const value = document.querySelector(".value");
-value.textContent = slider.value;
-slider.oninput = function () {
-    value.textContent = this.value;
-};
+// script.js
+var slider = document.getElementById("pa-slider");
+var output = document.getElementById("sliderValue");
+output.innerHTML = slider.value;
 
+slider.oninput = function() {
+    output.innerHTML = this.value;
+}
 

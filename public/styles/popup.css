@@ -1,38 +1,29 @@
 :root {
-	--accent-color: #fff;
-	--background-color: #000;
+	--accent-color: #313543;
+	--accent-color-2: #F23C0F;
+	--background-color: #fff;
 	--dark-accent-color: #1d1d1d;
-    --red: #ef233c;
-    --blue: #2345ef;
 	--color-gradient: linear-gradient(to right, #2345ef, #9188f9, #d5cefe, #ffffff, #f5adde, #fd83b5, #ef233c);
+}
+
+body {
+    font-family: "Helvetica Neue";
+    background-color: var(--background-color);
+    padding: 50px;
+	width: 300px;
+	height: 400px
+}
+
+h2 {
 	font-family: "Helvetica Neue";
+	color: var(--accent-color);
+	font-size: 40px;
+	font-variant: normal;
+	font-weight: 700;
+	line-height: 40px;
 }
 
-html,
-body {
-	height: 100%;
-	background: var(--background-color);
-}
-
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-
-body {
-	display: grid;
-	place-items: center;
-	width: 400px;
-	height: 500px
-}
-
-main {
-	display: flex;
-	flex-direction: column;
-	gap: 2.2em;
-	padding: 1em 0;
-}
+/* classes */
 
 .center {
     display: grid;
@@ -47,10 +38,12 @@ main {
     padding-bottom: 15px;
 }
 
+/* button */
+
 .generate-button {
   align-items: center;
   background-color: var(--background-color);
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color-2);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
@@ -94,7 +87,7 @@ main {
   transform: translateY(0);
 }
 
-.value{
+/**.value{
   align-items: center;
   color: var(--accent-color);
   background-color: var(--background-color);
@@ -119,7 +112,7 @@ main {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-}
+}**/
 
 /* === range theme and appearance === */
 input[type="range"] {
@@ -128,7 +121,7 @@ input[type="range"] {
 }
 
 input[type="range"] {
-	color: var(--red);
+	color: var(--accent-color-2);
 	--thumb-height: 1.125em;
 	--track-height: 0.225em;
 	--track-color: var(--dark-accent-color);
@@ -210,3 +203,4 @@ input[type="range"]::-webkit-slider-runnable-track {
 	background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
 		100% calc(var(--track-height) + 1px);
 }
+
