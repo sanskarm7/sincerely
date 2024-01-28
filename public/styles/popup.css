@@ -1,16 +1,15 @@
 :root {
 	--accent-color: #313543;
 	--accent-color-2: #F23C0F;
-	--background-color: #efeeee;
+	--background-color: #ffffff;
 }
-
 
 body {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: var(--background-color);
-    padding-top: 80px;
-	width: 300px;
-	height: 300px;
+    padding-top: 85px;
+	width: 400px;
+	height: 500px;
 	background: url("../images/popup-background.png");
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -31,13 +30,14 @@ h4 {
 	font-size: 16px;
 	font-variant: normal;
 	font-weight: 400;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 /* classes */
 
 .title-break {
-	margin-top: 25px;
-	margin-bottom: 25px;
+	margin-top: 5px;
 }
 
 .center {
@@ -48,10 +48,31 @@ h4 {
 
 .wrap {
 	display: flex;
-	margin-top: 5px;
-    margin-bottom: 5px;
 	align-items: center;
     justify-content: center;
+	margin: 0;
+}
+
+.wrap2 {
+	display: flex;
+	margin-top: 1.2em;
+	align-items: center;
+    justify-content: center;
+}
+
+.wrap3 {
+	display: flex;
+	margin-top: 2em;
+	align-items: center;
+    justify-content: center;
+}
+
+.wrap4 {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	padding-top: .5em;
+	padding-bottom: 1em;
 }
 
 /* button */
@@ -91,28 +112,17 @@ h4 {
 
 input[type="range"] {
 	font-size: 1.5rem;
-	width: 11rem;
-	position: relative;
+	width: 15rem;
 	background: var(--background-color);
 	overflow: hidden;
 }
 
 input[type="range"] {
 	color: var(--accent-color-2);
-	--thumb-height: 1em;
+	--thumb-height: .7em;
 	--track-height: 0.125em;
 	--track-color: var(--accent-color);
 	--clip-edges: .225em;
-}
-
-input[type="range"]:active {
-	cursor: grabbing;
-}
-
-input[type="range"]:disabled {
-	filter: grayscale(1);
-	opacity: 0.3;
-	cursor: not-allowed;
 }
 
 /* slider - webkit */
@@ -166,8 +176,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 /* textbox */
 
 .text-box {
-	height: 9em;
-	width: 11em;
+	height: 25em;
+	width: 20em;
 	overflow: auto;
 	font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
@@ -176,8 +186,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     text-transform: uppercase;
     color: var(--accent-color);
     background-color: var(--background-color);
-	margin: 0;
-    
+	margin: 0px;
     border: 3px solid var(--accent-color);
-    padding: 0.25em 0.5em;
+	padding: 0.25em 0.5em;
 } 
