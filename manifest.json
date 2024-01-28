@@ -3,8 +3,11 @@
   "name": "Passive Aggressive Text Generator",
   "description": "Uses AI to create passive-aggressive emails.",
   "version": "1.0",
+  "background": {
+    "service_worker": "popup/popup.js"
+  },
   "action": {
-    "default_popup": "views/popup.html",
+    "default_popup": "popup/popup.html",
     "default_icon": "public/img/icon.png"
   }
 }
