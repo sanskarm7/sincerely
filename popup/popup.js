@@ -27,7 +27,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   chrome.tabs.sendMessage(tabs[0].id, { action: "getSelection" }, function (response) {
     if (response && response.selection) {
       TEXTBODY = response.selection;
-
+      setPALevel();
       printInBox(TEXTBODY);
     }
     else {
@@ -41,9 +41,11 @@ async function setPALevel() {
 
     PALEVEL = await getInitialPALevel(TEXTBODY)
     // handle response from content script
-    console.log('Set Level:', PALEVEL);
-    printInBox(generatedText + PALEVEL);
+    //console.log('Set Level:', PALEVEL);
+    //printInBox(generatedText + PALEVEL);
 
+    slider.value = PALEVEL;
+    sliderNum.innerHTML = PALEVEL;
   } catch (error) {
     console.error('Error:', error);
   }
@@ -55,7 +57,7 @@ async function generate() {
   try {
     // send a message to content script to get highlighted text
     //const response = await sendMessageToContentScript({ action: 'getHighlightedText' });
-    console.log(TEXTBODY)
+    //console.log(TEXTBODY)
     slider.oninput = function () {
       sliderNum.innerHTML = this.value;
     }
