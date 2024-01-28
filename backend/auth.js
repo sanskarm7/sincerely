@@ -1,5 +1,5 @@
 require('dotenv').config()
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
