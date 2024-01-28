@@ -1,6 +1,8 @@
 const express = require('express')
 const router = new express.Router()
 const { adjustPA } = require('./pa-api-calls')
+const { evaluatePA } = require('./pa-api-calls')
+
 
 router.post('/api/adjust-pa.json', async (req, res) => {
     if (!req.body || !req.body.text || !req.body.pa) {
@@ -13,6 +15,15 @@ router.post('/api/adjust-pa.json', async (req, res) => {
     res.json({ message: removeQuotes(chatResponse) })
 })  
 
+router.post('/api/evaluatePA.json', async (req, res) => {
+    if (!req.body || !req.body.text) {
+        return res.status(400).send('Missing data');
+    }
+    const textData = req.body.text
+
+    chatResponse = await evaluatePA(textData);
+    res.json({ message: removeQuotes(chatResponse) })
+}) 
 function removeQuotes(text) {
     if (text.startsWith('"')) {
         text = text.slice(1)
