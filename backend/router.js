@@ -1,6 +1,6 @@
 const express = require('express')
 const router = new express.Router()
-const passiveAggressiveScale = require('./pa-api-calls')
+const { adjustPA } = require('./pa-api-calls')
 
 router.post('/api/adjust-pa.json', async (req, res) => {
     if (!req.body || !req.body.text || !req.body.pa) {
@@ -9,7 +9,7 @@ router.post('/api/adjust-pa.json', async (req, res) => {
     const textData = req.body.text
     const passiveAggressiveness = req.body.pa
 
-    chatResponse = await passiveAggressiveScale(textData, passiveAggressiveness);
+    chatResponse = await adjustPA(textData, passiveAggressiveness);
     res.json({ message: removeQuotes(chatResponse) })
 })  
 

@@ -35,7 +35,7 @@ function countTokens(text) {
   return nonEmptyTokens.length;
 }
 
-const passiveAggressiveScale = async (text, value) => {
+const adjustPA = async (text, value) => {
   const tokens = countTokens(text)
   const selectedScale = passiveAggressivenessLevels[value];
   if(tokens <= 500 && tokens >= 5){
@@ -57,7 +57,9 @@ const passiveAggressiveScale = async (text, value) => {
   }
 }
 
-module.exports = passiveAggressiveScale
+module.exports = {
+  adjustPA,
+}
 
 /*
 try {
