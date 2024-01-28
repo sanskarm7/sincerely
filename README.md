@@ -1,17 +1,17 @@
 # Sincerely
-An AI-powered passive aggressive message converter
+An AI-powered passive-aggressive message converter
 
 ### Inspiration
-In any social setting, there exists bounds to the acceptable forms of communication between individuals. There are things people can't say, even if they feel it's warranted. Whether it be through an email to a coworker, a request from a boss, asking for an owed favor from a friend, or even a text to a family member, the social limits to what we can say strongly impact the choice of our words. However, there is one universal exception to this constraint: passive aggressiveness. Passive aggressiveness is a vehicle to convey our true emotions to another person. Through simultaneously boasting the punch of an insult, and the elegance of a complement, passive aggressiveness is the perfect solution for offering both internal satisfaction and demonstrating external power, while cleverly dancing on the lines of the social constructs of cordiality.
+In any social setting, there exists bounds to the acceptable forms of communication between individuals. There are things people can't say, even if they feel it's warranted. Whether it be through an email to a coworker, a request from a boss, asking for an owed favor from a friend, or even a text to a family member, the social limits to what we can say strongly impact the choice of our words. However, there is one universal exception to this constraint: passive-aggressiveness. Passive-aggressiveness is a vehicle to convey our true emotions to another person. Through simultaneously boasting the punch of an insult, and the elegance of a complement, passive-aggressiveness is the perfect solution for offering both internal satisfaction and demonstrating external power, while cleverly dancing on the lines of the social constructs of cordiality.
 
-We have created a convenient Google Chrome extension, which allows for one to alter the passive aggressiveness of any text they enter into the popup, and insert it into whatever message they want to share. Powered by OpenAI's Chat GPT, the possibilities for creative means to express oneself are endless. 
+We have created a convenient Google Chrome extension, which allows for one to alter the passive-aggressiveness of any text they enter into the popup, and insert it into whatever message they want to share. Powered by OpenAI's Chat GPT, the possibilities for creative means to express oneself are endless. 
 
 Gone are the days of saying things without truly being heard.
 
 It's time to be sincere...
 
 ### Features
-Sincerely is a web extension for Chrome, powered by Chat GPT by OpenAI, that takes text inputted by users and assesses its existing passive-aggressiveness, displaying it on a scale from 1 to 7 (1 being neutral, and 7 being extremely passive aggressive). It allows users to adjust the level of the passive-aggressiveness of the text through the use of a slider conveniently placed in the extension. After users enter their text in the text box, they can click "Generate", and Sincerely will adjust the passive aggressiveness according to the slider value. The generated text can be easily copy and pasted into any document.
+Sincerely is a web extension for Chrome, powered by Chat GPT by OpenAI, that takes text inputted by users and assesses its existing passive-aggressiveness, displaying it on a scale from 1 to 7 (1 being neutral, and 7 being extremely passive-aggressive). It allows users to adjust the level of the passive-aggressiveness of the text through the use of a slider conveniently placed in the extension. After users enter their text in the text box, they can click "Generate", and Sincerely will adjust the passive-aggressiveness according to the slider value. The generated text can be easily copy and pasted into any document.
 
 ### How we built it
 Frontend: HTML, CSS, JS
