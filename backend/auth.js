@@ -1,9 +1,7 @@
 require('dotenv').config()
+const bcrypt = require('bcryptjs');
 
-CUSER = process.env.CORRECT_USERNAME
-CPASS = process.env.CORRECT_PASSWORD
-
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
       return res.status(401).send('Authentication required');
@@ -11,9 +9,12 @@ const authMiddleware = (req, res, next) => {
   
     const base64Credentials = authHeader.split(' ')[1];
     const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-    const [username, password] = credentials.split(':');
+    const [providedUser, providedPass] = credentials.split(':');
   
-    if (username === CUSER && password === CPASS) {
+    const isUsernameValid = (providedUser==='SincerelyTeam')
+    const isPasswordValid = await bcrypt.compare(providedPass, '$2a$10$OfSCWVJHqeyo3C7e9hxTF.B74QwuacOWTwSLejFPqTxujPw.MqULm');
+
+    if (isUsernameValid && isPasswordValid) {
       return next();
     }
   

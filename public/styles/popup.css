@@ -8,45 +8,51 @@ body {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: var(--background-color);
     padding-top: 85px;
-	width: 400px;
-	height: 499px;
-	background: url("../images/popup-background.png");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	overflow-x: hidden;
-	overflow-y: hidden;
+    width: 400px;
+    height: 499px;
+    background: url("../images/popup-background.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
+
 
 h2 {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: var(--accent-color);
-	font-size: 40px;
-	font-variant: normal;
-	font-weight: 700;
-	line-height: 40px;
+    color: var(--accent-color);
+    font-size: 40px;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 40px;
 }
+
 
 h4 {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: var(--accent-color);
-	font-size: 16px;
-	font-variant: normal;
-	font-weight: 400;
-	margin-top: 0px;
-	margin-bottom: 0px;
+    color: var(--accent-color);
+    font-size: 16px;
+    font-variant: normal;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
+
 /* classes */
+
 
 .title-break {
 	margin-top: 7px;
 }
+
 
 .center {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 
 .wrap {
 	display: flex;
@@ -78,7 +84,34 @@ h4 {
 	padding-bottom: .3em;
 }
 
+
+.wrap2 {
+    display: flex;
+    margin-top: 1.2em;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.wrap3 {
+    display: flex;
+    margin-top: 2em;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.wrap4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: .5em;
+    padding-bottom: 1em;
+}
+
+
 /* button */
+
 
 .generate-button {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -88,11 +121,12 @@ h4 {
     text-transform: uppercase;
     color: var(--accent-color);
     background-color: var(--background-color);
-	margin: 0;
-    
+    margin: 0;
+   
     cursor: pointer;
     border: 3px solid var(--accent-color);
     padding: 0.25em 0.5em;
+
 
     box-shadow: 1px 1px 0px 0px var(--accent-color-2), 2px 2px 0px 0px var(--accent-color-2), 3px 3px 0px 0px var(--accent-color-2), 4px 4px 0px 0px var(--accent-color-2), 5px 5px 0px 0px var(--accent-color-2);
     position: relative;
@@ -101,16 +135,19 @@ h4 {
     touch-action: manipulation;
 }
 
+
 .generate-button:active {
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
 }
 
+
 /* slider */
 
+
 .slider-value {
-	display:inline;
+    display:inline;
 }
 
 input[type="range"] {
@@ -130,53 +167,61 @@ input[type="range"] {
 
 /* slider - webkit */
 
+
 input[type="range"],
 input[type="range"]::-webkit-slider-runnable-track,
 input[type="range"]::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	transition: all ease 100ms;
-	height: var(--thumb-height);
+    -webkit-appearance: none;
+    transition: all ease 100ms;
+    height: var(--thumb-height);
 }
+
 
 input[type="range"]::-webkit-slider-runnable-track,
 input[type="range"]::-webkit-slider-thumb {
-	position: relative;
+    position: relative;
 }
+
 
 input[type="range"]::-webkit-slider-thumb {
-	--thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
-	--clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
-	--clip-bottom: calc(var(--thumb-height) - var(--clip-top));
-	--clip-further: calc(100% + 1px);
-	--box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
-		100vmax currentColor;
+    --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+    --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+    --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+    --clip-further: calc(100% + 1px);
+    --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+        100vmax currentColor;
 
-	width: var(--thumb-width, var(--thumb-height));
-	background: linear-gradient(currentColor 0 0) scroll no-repeat left center /
-		50% calc(var(--track-height) + 1px);
-	background-color: currentColor;
-	box-shadow: var(--box-fill);
-	border-radius: var(--thumb-width, var(--thumb-height));
 
-	filter: brightness(100%);
-	clip-path: polygon(
-		100% -1px,
-		var(--clip-edges) -1px,
-		0 var(--clip-top),
-		-100vmax var(--clip-top),
-		-100vmax var(--clip-bottom),
-		0 var(--clip-bottom),
-		var(--clip-edges) 100%,
-		var(--clip-further) var(--clip-further)
-	);
+    width: var(--thumb-width, var(--thumb-height));
+    background: linear-gradient(currentColor 0 0) scroll no-repeat left center /
+        50% calc(var(--track-height) + 1px);
+    background-color: currentColor;
+    box-shadow: var(--box-fill);
+    border-radius: var(--thumb-width, var(--thumb-height));
+
+
+    filter: brightness(100%);
+    clip-path: polygon(
+        100% -1px,
+        var(--clip-edges) -1px,
+        0 var(--clip-top),
+        -100vmax var(--clip-top),
+        -100vmax var(--clip-bottom),
+        0 var(--clip-bottom),
+        var(--clip-edges) 100%,
+        var(--clip-further) var(--clip-further)
+    );
 }
+
 
 input[type="range"]::-webkit-slider-runnable-track {
-	background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
-		100% calc(var(--track-height) + 1px);
+    background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center /
+        100% calc(var(--track-height) + 1px);
 }
 
+
 /* textbox */
+
 
 .text-box {
 	height: 20em;
@@ -194,4 +239,5 @@ input[type="range"]::-webkit-slider-runnable-track {
 	padding: 0.25em 0.5em;
 	overflow-y: auto;
 	word-wrap: break-word;
-} 
+}
+
