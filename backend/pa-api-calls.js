@@ -42,6 +42,7 @@ const adjustPA = async (text, value) => {
     const completion = await openai.chat.completions.create({
       messages: [{ role: "system", content: `I want to adjust the level of passive-aggressiveness of a passage: "${text}" so that it is ${selectedScale}. In other words, using a passive-aggressiveness scale from 1-7 (1 being neutral and 7 being the most passive-aggressive), change the text to have a score of ${value}. Only respond with the edited text.` }],
       model: "gpt-3.5-turbo",
+      temperature: 1.2
     });
     const aiResponse = await completion.choices[0].message.content
     return aiResponse;
@@ -53,7 +54,6 @@ const adjustPA = async (text, value) => {
     else{
       throw new TokenLengthError('Please highlight some text and try again');
     }
-   
   }
 }
 
