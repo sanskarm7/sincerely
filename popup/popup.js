@@ -76,8 +76,8 @@ async function generate() {
 async function getInitialPALevel(inputString) {
   console.log(inputString)
   const url = 'http://localhost:3000/api/evaluatePA.json'
-  const username = 'SincerelyTeam';
-  const password = 'PassiveAggressive01011419';
+  const username = '#';
+  const password = '#';
   const encodedCredentials = btoa(`${username}:${password}`)
 
   const requestOptions = {
@@ -106,8 +106,8 @@ async function getInitialPALevel(inputString) {
 async function getAPIResponse(inputString) {
   console.log(inputString)
   const url = 'http://localhost:3000/api/adjust-pa.json'
-  const username = 'SincerelyTeam';
-  const password = 'PassiveAggressive01011419';
+  const username = '#';
+  const password = '#';
   const encodedCredentials = btoa(`${username}:${password}`)
 
   const requestOptions = {
