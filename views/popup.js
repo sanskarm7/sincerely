@@ -1,9 +1,70 @@
-//display slider value
+// slider value
 var slider = document.getElementById("pa-slider");
-var output = document.getElementById("sliderValue");
+var PALEVEL = document.getElementById("sliderValue");
 
 slider.oninput = function() {
-    output.innerHTML = this.value;
+    PALEVEL.innerHTML = this.value;
 }
 
 
+// process text input
+const TEXTBODY = () => window.getSelection().toString();
+
+function wordCount(str) {
+    var ct = 0;
+    for (var i = 0; i < str.length; i++)
+      if (str(i) === " ") {
+        ct = +1;
+    }
+    ct += 1;
+    return ct;
+}
+
+function generate() {
+    if (wordCount(TEXTBODY) <= 500) {
+        generatedString = getAPIResponse()
+        document.getElementById('textbox').innerHTML = generatedString;
+    }
+    else {
+        printTooLongError("Text prompt too long, try again.")
+    }
+}
+
+function getAPIResponse() {
+    const returnValue = '';
+    const username = 'SincerelyTeam';
+    const password = 'PassiveAggressive01011419';
+    const encodedCredentials = btoa(`${username}:${password}`)
+
+    fetch('localhost:3000/api/adjust-pa.json', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${encodedCredentials}`
+        },
+        body: JSON.stringify({ text: TEXTBODY, pa: PALEVEL }),
+    })
+    .then(response => response.text())
+    .then(data => { returnValue = data })
+
+    return returnValue
+}
+
+function printTooLongError() {
+    var generateButton = document.getElementById("generate-button");
+    if (generateButton) {
+        generateButton.innerText = message;
+    } else {
+        console.error("Element with id 'generate-button' not found.");
+    }
+}
+
+
+// copy button for generated text
+function copy() {
+    var copyText = document.getElementById("textbox");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("Copied!");
+}
