@@ -113,7 +113,7 @@ h4 {
 /* button */
 
 
-.generate-button {
+.generate-button, .copy-button {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
     letter-spacing: 2px;
@@ -136,7 +136,7 @@ h4 {
 }
 
 
-.generate-button:active {
+.generate-button:active, .copy-button:active {
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;

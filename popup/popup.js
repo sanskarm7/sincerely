@@ -1,10 +1,17 @@
-// slider value
-var slider = document.getElementById("pa-slider");
-var PALEVEL = document.getElementById("sliderValue");
+/** sliders/visuals */
 
-slider.oninput = function() {
-    PALEVEL.innerHTML = this.value;
+// slider value
+var TEXTBODY = '';
+var slider = document.getElementById("pa-slider");
+var sliderNum = document.getElementById("sliderValue");
+
+
+slider.oninput = function () {
+  sliderNum.innerHTML = this.value;
 }
+var sliderNumAsString = sliderNum.textContent;
+var PALEVEL = parseInt(sliderNumAsString);
+
 
 // Event handlers
 var generateButton = document.querySelector('.generate-button');
@@ -13,77 +20,167 @@ generateButton.addEventListener('click', generate);
 var copyButton = document.querySelector('.copy-button');
 copyButton.addEventListener('click', copy);
 
-// process text input
-const TEXTBODY = window.getSelection().toString();
-console.log(TEXTBODY)
+/** text input processing */
 
-function wordCount(str) {
-    var ct = 0;
-    for (var i = 0; i < str.length; i++)
-      if (str(i) === " ") {
-        ct = +1;
-    }
-    ct += 1;
-    return ct;
-}
-async function getAPIResponse() {
-    const url = 'http://localhost:3000/api/adjust-pa.json'
-    const username = 'SincerelyTeam';
-    const password = 'PassiveAggressive01011419';
-    const encodedCredentials = btoa(`${username}:${password}`)
-    
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'authorization': `Basic ${encodedCredentials}`
-        },
-        body: JSON.stringify({ text: 'Your feet have been smelling very bad. Please stop wearing sandals to the office.', pa: PALEVEL })
-    }
+// assign highlighted text to TEXTBODY
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  chrome.tabs.sendMessage(tabs[0].id, { action: "getSelection" }, function (response) {
+    if (response && response.selection) {
+      TEXTBODY = response.selection;
 
-    try {
-        const response = await fetch(url, requestOptions);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data; // Return the data for use elsewhere
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
-function printTooLongError() {
-    var generateButton = document.getElementById("generate-button");
-    if (generateButton) {
-        generateButton.innerText = message;
-    } else {
-        console.error("Element with id 'generate-button' not found.");
-    }
-}
-
-async function generate() {
-    try {
-        // Send a message to the content script to get highlighted text
-        const response = await sendMessageToContentScript({ action: 'getHighlightedText' });
-    
-        // Handle the response from the content script
-        console.log('Received response in popup:', response);
-        
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    
-
-    if (wordCount(TEXTBODY) <= 500) {
-        generatedString = await getAPIResponse()
-        document.querySelector('.text-box').innerHTML = generatedString;
+      printInBox(TEXTBODY);
     }
     else {
-        printTooLongError("Text prompt too long, try again.")
+      printInBox("No text selected.");
     }
+  });
+});
+
+async function setPALevel() {
+  try {
+
+    PALEVEL = await getInitialPALevel(TEXTBODY)
+    // handle response from content script
+    console.log('Set Level:', PALEVEL);
+    printInBox(generatedText + PALEVEL);
+
+  } catch (error) {
+    console.error('Error:', error);
+  }
 }
+
+
+// generate button
+async function generate() {
+  try {
+    // send a message to content script to get highlighted text
+    //const response = await sendMessageToContentScript({ action: 'getHighlightedText' });
+    console.log(TEXTBODY)
+    slider.oninput = function () {
+      sliderNum.innerHTML = this.value;
+    }
+    sliderNumAsString = sliderNum.textContent;
+    PALEVEL = parseInt(sliderNumAsString);
+    const generatedText = await getAPIResponse(TEXTBODY)
+    // handle response from content script
+    console.log('Received response in popup:', generatedText);
+    printInBox(generatedText);
+
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+  /*if (wordCount(TEXTBODY) <= 500) {
+    //console.log("too long");
+    generatedString = await getAPIResponse();
+    document.querySelector('.text-box').innerHTML = generatedString;
+  }
+  else {
+    printTooLongError("Text prompt too long, try again.")
+  }*/
+}
+
+async function getInitialPALevel(inputString) {
+  console.log(inputString)
+  const url = 'http://localhost:3000/api/evaluatePA.json'
+  const username = 'SincerelyTeam';
+  const password = 'PassiveAggressive01011419';
+  const encodedCredentials = btoa(`${username}:${password}`)
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': `Basic ${encodedCredentials}`
+    },
+    body: JSON.stringify({ text: inputString })
+  }
+
+  try {
+    const response = await fetch(url, requestOptions);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return parseInt(data['message']); // Return the data for use elsewhere
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+// gets generated text from server given input
+async function getAPIResponse(inputString) {
+  console.log(inputString)
+  const url = 'http://localhost:3000/api/adjust-pa.json'
+  const username = 'SincerelyTeam';
+  const password = 'PassiveAggressive01011419';
+  const encodedCredentials = btoa(`${username}:${password}`)
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': `Basic ${encodedCredentials}`
+    },
+    body: JSON.stringify({ text: inputString, pa: PALEVEL })
+  }
+
+  try {
+    const response = await fetch(url, requestOptions);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data['message']; // Return the data for use elsewhere
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+
+//helper functions
+function wordCount(str) {
+  var ct = 0;
+  for (var i = 0; i < str.length; i++)
+    if (str(i) === " ") {
+      ct = +1;
+    }
+  ct += 1;
+  return ct;
+}
+
+function printInBox(message) {
+  document.getElementById('textbox').innerText = (message);
+}
+
+function printTooLongError(message) {
+  var generateButton = document.getElementById("generate-button");
+  if (generateButton) {
+    generateButton.innerText = message;
+  } else {
+    console.error("Element with id 'generate-button' not found.");
+  }
+}
+
+
+/** copying text */
+
+// copy button for generated text
+function copy() {
+  var copyText = document.getElementById("textbox");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  alert("Copied!");
+}
+
+
+
+
+/**
+ * old (popup.js to content.js)
 
 function sendMessageToContentScript(message) {
     return new Promise((resolve, reject) => {
@@ -98,15 +195,4 @@ function sendMessageToContentScript(message) {
       });
     });
   }
-  
-
-// copy button for generated text
-function copy() {
-    var copyText = document.getElementById("textbox");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(copyText.value);
-    alert("Copied!");
-}
-
-
+*/
