@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-
-
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="../public/styles/popup.css" />
-    <script type="text/javascript" src="popup.js"></script>
-    <title>Passive Aggressive Email Popup</title>
-  </head>
 
+<head>
+  <link rel="stylesheet" type="text/css" href="../public/styles/popup.css" />
+  <title>Passive Aggressive Email Popup</title>
+</head>
 
-  <body>
-    <div class="title-break"></div>
-    <div class="center"></div>
+<body>
+  <div class="title-break"></div>
+  <div class="center"></div>
 
-    <div class="wrap">
-      <h4>PA VALUE: <div class="slider-value" id="sliderValue">0</div></h4>
-    </div>
+  <div class="wrap">
+    <h4>PA VALUE: <div class="slider-value" id="sliderValue">1</div>
+    </h4>
+  </div>
 
-    <div class="wrap">
-      <div class="slider">
-        <input type="range" id="pa-slider" min="0" max="6" value="0" step="1"/>
-      </div>
+  <div class="wrap">
+    <div class="slider">
+      <input type="range" id="pa-slider" min="1" max="7" value="1" step="1" />
     </div>
-    
-    <div class="wrap2">
-      <button class="generate-button" onclick="generate()">GENERATE</button>
-    </div>
+  </div>
 
-    <div class="wrap3">
-      <div class="text-box">
-        Click GENERATE for text...
-      </div>
+  <div class="wrap2">
+    <button class="generate-button" onclick="generate()">GENERATE</button>
+  </div>
+
+  <div class="wrap3">
+    <div class="text-box" id="textbox">
+      Click GENERATE for text...
     </div>
-    
-    <div class="wrap4">
-      <button class="generate-button" onclick="copy()">COPY</button>
-    </div>
-    </div>
-    <script src="popup.js"></script>
-  </body>
+  </div>
+
+  <div class="wrap4">
+    <button class="copy-button">COPY</button>
+  </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
 </html>
-
-

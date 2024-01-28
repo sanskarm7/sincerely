@@ -3,11 +3,31 @@
   "name": "Passive Aggressive Text Generator",
   "description": "Uses AI to create passive-aggressive emails.",
   "version": "1.0",
-  "background": {
-    "service_worker": "popup/popup.js"
-  },
   "action": {
     "default_popup": "popup/popup.html",
-    "default_icon": "public/img/icon.png"
-  }
+    "default_icon": "public/images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "popup/content.js"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "http://localhost:3000/"
+  ],
+  "permissions": [
+    "activeTab",
+    "browsingData",
+    "pageCapture",
+    "scripting",
+    "storage",
+    "system.display",
+    "tabCapture",
+    "tabs"
+  ]
 }
