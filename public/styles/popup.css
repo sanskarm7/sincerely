@@ -1,19 +1,20 @@
 :root {
-    --accent-color: #313543;
-    --accent-color-2: #F23C0F;
-    --background-color: #ffffff;
+	--accent-color: #313543;
+	--accent-color-2: #ff1400;
+	--background-color: #ffffff;
 }
-
 
 body {
     font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     background-color: var(--background-color);
     padding-top: 85px;
     width: 400px;
-    height: 500px;
+    height: 499px;
     background: url("../images/popup-background.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
@@ -42,7 +43,7 @@ h4 {
 
 
 .title-break {
-    margin-top: 5px;
+	margin-top: 7px;
 }
 
 
@@ -54,10 +55,33 @@ h4 {
 
 
 .wrap {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
     justify-content: center;
-    margin: 0;
+	margin: 0px;
+}
+
+.wrap2 {
+	display: flex;
+	margin-top: 1.2em;
+	margin-bottom: 1.5em;
+	align-items: center;
+    justify-content: center;
+}
+
+.wrap3 {
+	display: flex;
+	margin-top: 1em;
+	align-items: center;
+    justify-content: center;
+}
+
+.wrap4 {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	padding-top: .7em;
+	padding-bottom: .3em;
 }
 
 
@@ -126,23 +150,20 @@ h4 {
     display:inline;
 }
 
-
 input[type="range"] {
-    font-size: 1.5rem;
-    width: 15rem;
-    background: var(--background-color);
-    overflow: hidden;
+	font-size: 1.5rem;
+	width: 15rem;
+	background: var(--background-color);
+	overflow: hidden;
 }
 
-
 input[type="range"] {
-    color: var(--accent-color-2);
-    --thumb-height: .7em;
-    --track-height: 0.125em;
-    --track-color: var(--accent-color);
-    --clip-edges: .225em;
+	color: var(--accent-color-2);
+	--thumb-height: .7em;
+	--track-height: 0.125em;
+	--track-color: var(--accent-color);
+	--clip-edges: .225em;
 }
-
 
 /* slider - webkit */
 
@@ -203,17 +224,20 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 
 .text-box {
-    height: 25em;
-    width: 20em;
-    overflow: auto;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	height: 20em;
+	max-height: 20em;
+	width: 20em;
+	font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
     letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
     color: var(--accent-color);
     background-color: var(--background-color);
-    margin: 0px;
+	margin: 0px;
     border: 3px solid var(--accent-color);
-    padding: 0.25em 0.5em;
+	padding: 0.25em 0.5em;
+	overflow-y: auto;
+	word-wrap: break-word;
 }
+
