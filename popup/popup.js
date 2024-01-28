@@ -69,15 +69,6 @@ async function generate() {
   } catch (error) {
     console.error('Error:', error);
   }
-
-  /*if (wordCount(TEXTBODY) <= 500) {
-    //console.log("too long");
-    generatedString = await getAPIResponse();
-    document.querySelector('.text-box').innerHTML = generatedString;
-  }
-  else {
-    printTooLongError("Text prompt too long, try again.")
-  }*/
 }
 
 async function getInitialPALevel(inputString) {
@@ -169,30 +160,15 @@ function printTooLongError(message) {
 
 // copy button for generated text
 function copy() {
-  var copyText = document.getElementById("textbox");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
-  alert("Copied!");
+  var boxText = document.getElementById('textbox').innerText;
+  var temp = document.createElement('input');
+  temp.setAttribute('value', boxText);
+  document.body.appendChild(temp);
+  temp.select();
+  temp.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(temp.value); // Extract value here
+  document.body.removeChild(temp); // Remove the temporary input element
+  //alert("Copied!");
 }
 
 
-
-
-/**
- * old (popup.js to content.js)
-
-function sendMessageToContentScript(message) {
-    return new Promise((resolve, reject) => {
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
-          if (chrome.runtime.lastError) {
-            reject(chrome.runtime.lastError);
-          } else {
-            resolve(response);
-          }
-        });
-      });
-    });
-  }
-*/
